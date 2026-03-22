@@ -1,0 +1,61 @@
+﻿@model SimpleCRUD.UI.Models.TableViewModel
+
+<style>
+    .divAddUser{
+        text-align:right;
+        height: 25px;
+    }
+
+    #btnAddUser {
+        margin:20px 20px 20px 20px;
+        height: 100%;
+        width: 100px;
+        border:1px solid black;
+    }
+</style>
+
+<div class="card shadow-sm border-0 rounded-4 mb-4">
+    <div class="divAddUser">
+        <button type="button" id="btnAddUser" class="btn">Add User</button>
+    </div>
+    <div class="card-body p-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h3 class="h5 mb-0 fw-semibold">@Model.Title</h3>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+                <thead class="table-light">
+                    <tr>
+                        @foreach (var header in Model.Headers)
+                        {
+                            <th class="fw-semibold text-dark">@header</th>
+                        }
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.Rows != null && Model.Rows.Any())
+                    {
+                        @foreach (var row in Model.Rows)
+                        {
+                            <tr>
+                                @foreach (var cell in row)
+                                {
+                                    <td>@cell</td>
+                                }
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="@Model.Headers.Count" class="text-center text-muted py-4">
+                                No data available.
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
