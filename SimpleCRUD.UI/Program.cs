@@ -2,6 +2,11 @@ try
 {
     var builder = WebApplication.CreateBuilder(args);
 
+    builder.Services.AddHttpClient("SimpleCrudApi", client =>
+    {
+        client.BaseAddress = new Uri(builder.Configuration["ApiSettings:BaseUrl"]!);
+    });
+
     builder.Services.AddControllersWithViews();
 
     var app = builder.Build();

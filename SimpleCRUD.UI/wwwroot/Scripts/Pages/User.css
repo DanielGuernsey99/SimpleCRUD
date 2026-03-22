@@ -1,0 +1,77 @@
+﻿/* Card */
+.users-card {
+    border-radius: 0.75rem;
+    background: #111111;
+    border: 1px solid #2a2a2a;
+}
+
+    .users-card .card-header {
+        background-color: #171717;
+        border-bottom: 1px solid #2a2a2a;
+        padding: 1.25rem 1.5rem;
+    }
+
+    .users-card .card-title {
+        margin-bottom: 0;
+        font-weight: 600;
+        color: #ffffff;
+    }
+
+/* Add User Button */
+#btnAddUser {
+    min-width: 110px;
+    border: 1px solid #444;
+    background: #121212;
+    color: #ffffff;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+    #btnAddUser:hover {
+        background: #1d1d1d;
+        border-color: #777;
+        color: #ffffff;
+    }
+
+/* Table */
+.users-table {
+    margin-bottom: 0;
+}
+
+    .users-table thead th {
+        font-weight: 600;
+        color: #e5e5e5;
+        background-color: #1b1b1b;
+        border-bottom: 1px solid #2a2a2a;
+        border-top: none;
+        white-space: nowrap;
+    }
+
+    .users-table tbody tr {
+        background-color: #101010;
+        color: #ffffff;
+        border-bottom: 1px solid #1f1f1f;
+    }
+
+    .users-table tbody td {
+        vertical-align: middle;
+        border-top: none;
+    }
+
+    /* Hover state (dark, subtle) */
+    .users-table tbody tr:hover {
+        background-color: #181818;
+    }
+
+/* Empty state */
+.empty-state {
+    padding: 2rem 0;
+    color: #888;
+    text-align: center;
+}
+
+/* Optional: tighten spacing slightly */
+.users-table td,
+.users-table th {
+    padding: 0.75rem 1rem;
+}

@@ -1,35 +1,23 @@
-﻿@model SimpleCRUD.UI.Models.TableViewModel
+﻿@model SimpleCRUD.UI.ViewModels.TableViewModel
 
-<style>
-    .divAddUser{
-        text-align:right;
-        height: 25px;
-    }
+<link rel="stylesheet" href="~/Scripts/Pages/User.css" asp-append-version="true" />
 
-    #btnAddUser {
-        margin:20px 20px 20px 20px;
-        height: 100%;
-        width: 100px;
-        border:1px solid black;
-    }
-</style>
-
-<div class="card shadow-sm border-0 rounded-4 mb-4">
-    <div class="divAddUser">
-        <button type="button" id="btnAddUser" class="btn">Add User</button>
+<div class="card shadow-sm border-0 users-card mb-4">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3 class="card-title h5">@Model.Title</h3>
+        <a asp-controller="User" asp-action="Create" id="btnAddUser" class="btn btn-light">
+            Add User
+        </a>
     </div>
-    <div class="card-body p-4">
-        <div class="d-flex justify-content-between align-items-center mb-3">
-            <h3 class="h5 mb-0 fw-semibold">@Model.Title</h3>
-        </div>
 
+    <div class="card-body p-0">
         <div class="table-responsive">
-            <table class="table table-hover align-middle mb-0">
-                <thead class="table-light">
+            <table class="table table-hover align-middle mb-0 users-table">
+                <thead>
                     <tr>
                         @foreach (var header in Model.Headers)
                         {
-                            <th class="fw-semibold text-dark">@header</th>
+                            <th>@header</th>
                         }
                     </tr>
                 </thead>
@@ -49,7 +37,7 @@
                     else
                     {
                         <tr>
-                            <td colspan="@Model.Headers.Count" class="text-center text-muted py-4">
+                            <td colspan="@Model.Headers.Count" class="empty-state">
                                 No data available.
                             </td>
                         </tr>
