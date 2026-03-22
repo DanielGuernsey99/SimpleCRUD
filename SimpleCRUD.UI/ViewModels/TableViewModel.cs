@@ -1,4 +1,4 @@
-﻿namespace SimpleCRUD.UI.Models
+﻿namespace SimpleCRUD.UI.ViewModels
 {
     public class TableViewModel
     {
