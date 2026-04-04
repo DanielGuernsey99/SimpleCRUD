@@ -21,7 +21,7 @@ namespace SimpleCRUD.BL.Services
         /// Retrieves all ApplicationUsers in the ApplicationUsers table
         /// </summary>
         /// <returns>List of ApplicationUsers</returns>
-        public async Task<List<ApplicationUser>> GetAllApplicationUsers()
+        public async Task<List<ApplicationUsers>> GetAllApplicationUsers()
         {
             return await _dbContext.ApplicationUsers.AsNoTracking().ToListAsync();
         }
@@ -31,7 +31,7 @@ namespace SimpleCRUD.BL.Services
         /// </summary>
         /// <param name="applicationUserID">ID of the ApplicationUser</param>
         /// <returns>A single ApplicationUser</returns>
-        public async Task<ApplicationUser?> GetApplicationUserByApplicationUserID(Guid applicationUserID)
+        public async Task<ApplicationUsers?> GetApplicationUserByApplicationUserID(Guid applicationUserID)
         {
             return await _dbContext.ApplicationUsers.AsNoTracking().FirstOrDefaultAsync(au => au.ApplicationUserId == applicationUserID);
         }
@@ -41,7 +41,7 @@ namespace SimpleCRUD.BL.Services
         /// </summary>
         /// <param name="userID">ID of the User</param>
         /// <returns>List of ApplicationUsers</returns>
-        public async Task<List<ApplicationUser>> GetApplicationUsersByUserID(Guid userID)
+        public async Task<List<ApplicationUsers>> GetApplicationUsersByUserID(Guid userID)
         {
             return await _dbContext.ApplicationUsers.AsNoTracking().Where(au => au.UserId == userID).ToListAsync();
         }
@@ -52,7 +52,7 @@ namespace SimpleCRUD.BL.Services
         /// </summary>
         /// <param name="applicationUser">ApplicationUser to be inserted</param>
         /// <returns>The inserted ApplicationUser</returns>
-        public async Task<ApplicationUser> InsertApplicationUser(ApplicationUser applicationUser)
+        public async Task<ApplicationUsers> InsertApplicationUser(ApplicationUsers applicationUser)
         {
             try
             {

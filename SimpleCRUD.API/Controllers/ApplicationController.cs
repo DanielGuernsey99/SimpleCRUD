@@ -20,7 +20,7 @@ namespace SimpleCRUD.API.Controllers
         }
 
         [HttpGet("GetAllApplications")]
-        public async Task<ActionResult<List<Application>>> GetAllApplications()
+        public async Task<ActionResult<List<Applications>>> GetAllApplications()
         {
             var applications = await _applicationService.GetAllApplications();
 
@@ -35,7 +35,7 @@ namespace SimpleCRUD.API.Controllers
         }
 
         [HttpGet("GetApplicationByApplicationName/{applicationName}")]
-        public async Task<ActionResult<List<Application>>> GetApplicationByApplicationName(string applicationName)
+        public async Task<ActionResult<List<Applications>>> GetApplicationByApplicationName(string applicationName)
         {
             var applications = await _applicationService.GetApplicationByApplicationName(applicationName);
 
@@ -50,7 +50,7 @@ namespace SimpleCRUD.API.Controllers
         }
 
         [HttpGet("GetApplicationByApplicationID/{applicationID}")]
-        public async Task<ActionResult<List<Application>>> GetApplicationByApplicationID(Guid applicationID)
+        public async Task<ActionResult<List<Applications>>> GetApplicationByApplicationID(Guid applicationID)
         {
             var applications = await _applicationService.GetApplicationByApplicationID(applicationID);
 
@@ -65,7 +65,7 @@ namespace SimpleCRUD.API.Controllers
         }
 
         [HttpPost("InsertApplication")]
-        public async Task<ActionResult<Application>> InsertApplication([FromBody] InsertApplicationRequest insertApplicationRequest)
+        public async Task<ActionResult<Applications>> InsertApplication([FromBody] InsertApplicationRequest insertApplicationRequest)
         {
             if (insertApplicationRequest == null)
             {
@@ -77,7 +77,7 @@ namespace SimpleCRUD.API.Controllers
                 return BadRequest("ApplicationName cannot be null or empty.");
             }
 
-            var application = new Application
+            var application = new Applications
             {
                 ApplicationId = new Guid(),
                 ApplicationName = insertApplicationRequest.ApplicationName,

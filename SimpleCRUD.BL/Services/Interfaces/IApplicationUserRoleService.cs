@@ -13,14 +13,10 @@ namespace SimpleCRUD.BL.Services.Interfaces
 
         Task<ApplicationUserRole?> GetApplicationUserRoleByApplicationUserRoleID(Guid ApplicationUserRoleID);
 
-        Task<List<ApplicationUserRole>> GetApplicationUserRolesByApplicationID(Guid ApplicationID);
-
         Task<List<ApplicationUserRole>> GetApplicationUserRolesByApplicationUserID(Guid ApplicationUserID);
 
         Task<List<ApplicationUserRole>> GetApplicationUserRolesByApplicationRoleID(Guid ApplicationRoleID);
 
         Task<ApplicationUserRole> InsertApplicationUserRole(ApplicationUserRole applicationUserRole);
-
-        
     }
 }

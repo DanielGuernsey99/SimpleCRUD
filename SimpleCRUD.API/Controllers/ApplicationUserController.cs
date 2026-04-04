@@ -21,7 +21,7 @@ namespace SimpleCRUD.API.Controllers
         }
 
         [HttpGet("GetAllApplicationUsers")]
-        public async Task<ActionResult<List<ApplicationUser>>> GetAllApplicationUsers()
+        public async Task<ActionResult<List<ApplicationUsers>>> GetAllApplicationUsers()
         {
             var applicationUsers = await _applicationUserService.GetAllApplicationUsers();
 
@@ -36,7 +36,7 @@ namespace SimpleCRUD.API.Controllers
         }
 
         [HttpGet("GetApplicationUserByApplicationUserID/{applicationUserID}")]
-        public async Task<ActionResult<ApplicationUser>> GetApplicationUserByApplicationUserID(Guid applicationUserID)
+        public async Task<ActionResult<ApplicationUsers>> GetApplicationUserByApplicationUserID(Guid applicationUserID)
         {
             var applicationUsers = await _applicationUserService.GetApplicationUserByApplicationUserID(applicationUserID);
 
@@ -51,7 +51,7 @@ namespace SimpleCRUD.API.Controllers
         }
 
         [HttpGet("GetApplicationUserByUserID/{userID}")]
-        public async Task<ActionResult<ApplicationUser>> GetApplicationUserByUserID(Guid userID)
+        public async Task<ActionResult<ApplicationUsers>> GetApplicationUserByUserID(Guid userID)
         {
             var applicationUsers = await _applicationUserService.GetApplicationUsersByUserID(userID);
 
@@ -66,7 +66,7 @@ namespace SimpleCRUD.API.Controllers
         }
 
         [HttpPost("InsertApplicationUser")]
-        public async Task<ActionResult<ApplicationUser>> InsertApplicationUser([FromBody] InsertApplicationUserRequest insertApplicationUserRequest)
+        public async Task<ActionResult<ApplicationUsers>> InsertApplicationUser([FromBody] InsertApplicationUserRequest insertApplicationUserRequest)
         {
             if (insertApplicationUserRequest == null)
             {
@@ -83,7 +83,7 @@ namespace SimpleCRUD.API.Controllers
                 return BadRequest("Application User is null");
             }
 
-            var applicationUser = new ApplicationUser
+            var applicationUser = new ApplicationUsers
             {
                 ApplicationUserId = new Guid(),
                 ApplicationId = insertApplicationUserRequest.ApplicationID,

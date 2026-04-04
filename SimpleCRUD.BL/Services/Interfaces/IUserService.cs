@@ -9,10 +9,10 @@ namespace SimpleCRUD.BL.Services.Interfaces
 {
     public interface IUserService
     {
-        Task<List<User>> GetAllUsers();
+        Task<List<Users>> GetAllUsers();
 
-        Task<User?> GetUserByUserID(Guid UserID);
+        Task<Users?> GetUserByUserID(Guid UserID);
 
-        Task<User> InsertUser(User user);
+        Task<Users> InsertUser(Users user);
     }
 }

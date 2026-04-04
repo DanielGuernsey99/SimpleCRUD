@@ -25,7 +25,7 @@ namespace SimpleCRUD.BL.Services
         /// Retrieves all ApplicationRoles in the Application Roles table
         /// </summary>
         /// <returns>List of ApplicationRoles</returns>
-        public async Task<List<ApplicationRole>> GetAllApplicationRoles()
+        public async Task<List<ApplicationRoles>> GetAllApplicationRoles()
         {
             return await _dbContext.ApplicationRoles.AsNoTracking().ToListAsync();
         }
@@ -35,7 +35,7 @@ namespace SimpleCRUD.BL.Services
         /// </summary>
         /// <param name="ApplicationRoleID">Id of the ApplicationRole</param>
         /// <returns>A single Application Role</returns>
-        public async Task<ApplicationRole?> GetApplicationRoleByApplicationRoleID(Guid ApplicationRoleID)
+        public async Task<ApplicationRoles?> GetApplicationRoleByApplicationRoleID(Guid ApplicationRoleID)
         {
             return await _dbContext.ApplicationRoles.AsNoTracking().FirstOrDefaultAsync(ar => ar.ApplicationRoleId == ApplicationRoleID);
         }
@@ -45,7 +45,7 @@ namespace SimpleCRUD.BL.Services
         /// </summary>
         /// <param name="RoleID">Id of the Role</param>
         /// <returns>List of ApplicationRoles</returns>
-        public async Task<List<ApplicationRole>> GetApplicationRolesByRoleID(Guid RoleID)
+        public async Task<List<ApplicationRoles>> GetApplicationRolesByRoleID(Guid RoleID)
         {
             return await _dbContext.ApplicationRoles.AsNoTracking().Where(ar => ar.RoleId == RoleID).ToListAsync();
         }
@@ -55,7 +55,7 @@ namespace SimpleCRUD.BL.Services
         /// </summary>
         /// <param name="ApplicationID">ID of the Application</param>
         /// <returns>List of ApplicationRoles</returns>
-        public async Task<List<ApplicationRole>> GetApplicationRolesByApplicationID(Guid ApplicationID)
+        public async Task<List<ApplicationRoles>> GetApplicationRolesByApplicationID(Guid ApplicationID)
         {
             return await _dbContext.ApplicationRoles.AsNoTracking().Where(ar => ar.ApplicationId == ApplicationID).ToListAsync();
         }
@@ -65,7 +65,7 @@ namespace SimpleCRUD.BL.Services
         /// </summary>
         /// <param name="applicationRole">ApplicationRole to be inserted</param>
         /// <returns>The ApplicationRole inserted</returns>
-        public async Task<ApplicationRole> InsertApplicationRole(ApplicationRole applicationRole)
+        public async Task<ApplicationRoles> InsertApplicationRole(ApplicationRoles applicationRole)
         {
             try
             {

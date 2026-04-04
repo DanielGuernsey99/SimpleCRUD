@@ -25,7 +25,7 @@ namespace SimpleCRUD.BL.Services
         /// Retrieves all users in the Users table
         /// </summary>
         /// <returns>List of users</returns>
-        public async Task<List<User>> GetAllUsers()
+        public async Task<List<Users>> GetAllUsers()
         {
             return await _dbContext.Users.AsNoTracking().ToListAsync();
         }
@@ -35,7 +35,7 @@ namespace SimpleCRUD.BL.Services
         /// </summary>
         /// <param name="UserID">UserID of the user</param>
         /// <returns>A single user</returns>
-        public async Task<User?> GetUserByUserID(Guid UserID)
+        public async Task<Users?> GetUserByUserID(Guid UserID)
         {
             return await _dbContext.Users.AsNoTracking().FirstOrDefaultAsync(u => u.UserId == UserID);
         }
@@ -45,7 +45,7 @@ namespace SimpleCRUD.BL.Services
         /// </summary>
         /// <param name="user">User to be inserted</param>
         /// <returns>The inserted user</returns>
-        public async Task<User> InsertUser(User user)
+        public async Task<Users> InsertUser(Users user)
         {
             try
             {

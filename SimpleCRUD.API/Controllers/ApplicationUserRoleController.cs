@@ -80,21 +80,6 @@ namespace SimpleCRUD.API.Controllers
             }
         }
 
-        [HttpGet("GetApplicationUserRoleByApplicationID/{applicationID}")]
-        public async Task<ActionResult<List<ApplicationUserRole>>> GetApplicationUserRoleByApplicationID(Guid applicationID)
-        {
-            var applicationUserRoles = await _applicationUserRoleService.GetApplicationUserRolesByApplicationID(applicationID);
-
-            if (applicationUserRoles != null)
-            {
-                return Ok(applicationUserRoles);
-            }
-            else
-            {
-                return NotFound($"ApplicationUserRoles with ApplicationID {applicationID} was not found.");
-            }
-        }
-
         [HttpPost("InsertApplicationUserRole")]
         public async Task<ActionResult<ApplicationUserRole>> InsertApplicationUserRole([FromBody] InsertApplicationUserRoleRequest insertApplicationUserRoleRequest)
         {
@@ -116,7 +101,6 @@ namespace SimpleCRUD.API.Controllers
             var applicationUserRole = new ApplicationUserRole
             {
                 ApplicationUserRolesId = new Guid(),
-                ApplicationId = insertApplicationUserRoleRequest.ApplicationID,
                 ApplicationRoleId = insertApplicationUserRoleRequest.ApplicationRoleID,
                 ApplicationUserId = insertApplicationUserRoleRequest.ApplicationUserID
             };

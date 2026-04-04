@@ -9,14 +9,14 @@ namespace SimpleCRUD.BL.Services.Interfaces
 {
     public interface IApplicationRoleService
     {
-        Task<List<ApplicationRole>> GetAllApplicationRoles();
+        Task<List<ApplicationRoles>> GetAllApplicationRoles();
 
-        Task<ApplicationRole?> GetApplicationRoleByApplicationRoleID(Guid ApplicationRoleID);
+        Task<ApplicationRoles?> GetApplicationRoleByApplicationRoleID(Guid ApplicationRoleID);
 
-        Task<List<ApplicationRole>> GetApplicationRolesByRoleID(Guid RoleID);
+        Task<List<ApplicationRoles>> GetApplicationRolesByRoleID(Guid RoleID);
 
-        Task<List<ApplicationRole>> GetApplicationRolesByApplicationID(Guid ApplicationID);
+        Task<List<ApplicationRoles>> GetApplicationRolesByApplicationID(Guid ApplicationID);
 
-        Task<ApplicationRole> InsertApplicationRole(ApplicationRole applicationRole);
+        Task<ApplicationRoles> InsertApplicationRole(ApplicationRoles applicationRole);
     }
 }

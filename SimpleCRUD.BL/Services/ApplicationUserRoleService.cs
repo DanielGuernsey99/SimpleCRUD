@@ -42,16 +42,6 @@ namespace SimpleCRUD.BL.Services
         }
 
         /// <summary>
-        /// Retrieves ApplicationUserRoles by ApplicationID
-        /// </summary>
-        /// <param name="applicationID">ID of the Application</param>
-        /// <returns>List of ApplicationUserRoles</returns>
-        public async Task<List<ApplicationUserRole>> GetApplicationUserRolesByApplicationID(Guid applicationID)
-        {
-            return await _dbContext.ApplicationUserRoles.AsNoTracking().Where(aur => aur.ApplicationId == applicationID).ToListAsync();
-        }
-
-        /// <summary>
         /// Retrieves ApplicationUserRoles by ApplicationUserID
         /// </summary>
         /// <param name="applicationUserID">ID of the ApplicationUser</param>
