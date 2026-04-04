@@ -9,7 +9,7 @@ namespace SimpleCRUD.BL.Services.Interfaces
 {
     public interface IApplicationService
     {
-        Task <List<Applications>> GetAllApplications();
+        Task<List<Applications>> GetAllApplications();
 
         Task<Applications?> GetApplicationByApplicationID(Guid ApplicationID);
 

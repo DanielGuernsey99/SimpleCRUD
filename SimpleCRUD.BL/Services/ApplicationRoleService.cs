@@ -16,7 +16,8 @@ namespace SimpleCRUD.BL.Services
         private readonly SimpleCrudDbContext _dbContext;
         private readonly ILogger<ApplicationRoleService> _logger;
 
-        public ApplicationRoleService(SimpleCrudDbContext dbContext, ILogger<ApplicationRoleService> logger) {
+        public ApplicationRoleService(SimpleCrudDbContext dbContext, ILogger<ApplicationRoleService> logger)
+        {
             _dbContext = dbContext;
             _logger = logger;
         }
