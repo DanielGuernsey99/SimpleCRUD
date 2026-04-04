@@ -12,24 +12,17 @@ public partial class ApplicationUserRole
     [Column("ApplicationUserRolesID")]
     public Guid ApplicationUserRolesId { get; set; }
 
-    [Column("ApplicationID")]
-    public Guid ApplicationId { get; set; }
-
     [Column("ApplicationUserID")]
     public Guid ApplicationUserId { get; set; }
 
     [Column("ApplicationRoleID")]
     public Guid ApplicationRoleId { get; set; }
 
-    [ForeignKey("ApplicationId")]
-    [InverseProperty("ApplicationUserRoles")]
-    public virtual Application Application { get; set; } = null!;
-
     [ForeignKey("ApplicationRoleId")]
     [InverseProperty("ApplicationUserRoles")]
-    public virtual ApplicationRole ApplicationRole { get; set; } = null!;
+    public virtual ApplicationRoles ApplicationRole { get; set; } = null!;
 
     [ForeignKey("ApplicationUserId")]
     [InverseProperty("ApplicationUserRoles")]
-    public virtual ApplicationUser ApplicationUser { get; set; } = null!;
+    public virtual ApplicationUsers ApplicationUser { get; set; } = null!;
 }

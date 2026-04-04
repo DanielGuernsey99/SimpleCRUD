@@ -25,7 +25,7 @@ namespace SimpleCRUD.BL.Services
         /// Retrieves all Applications in the Applications table
         /// </summary>
         /// <returns>List of Applications</returns>
-        public async Task<List<Application>> GetAllApplications()
+        public async Task<List<Applications>> GetAllApplications()
         {
             return await _dbContext.Applications.AsNoTracking().ToListAsync();
         }
@@ -35,7 +35,7 @@ namespace SimpleCRUD.BL.Services
         /// </summary>
         /// <param name="applicationID">ID of the Application</param>
         /// <returns>A single Application</returns>
-        public async Task<Application?> GetApplicationByApplicationID(Guid applicationID)
+        public async Task<Applications?> GetApplicationByApplicationID(Guid applicationID)
         {
             return await _dbContext.Applications.AsNoTracking().FirstOrDefaultAsync(a => a.ApplicationId == applicationID);
         }
@@ -45,7 +45,7 @@ namespace SimpleCRUD.BL.Services
         /// </summary>
         /// <param name="applicationName">Name of the Application</param>
         /// <returns>A single Application</returns>
-        public async Task<Application?> GetApplicationByApplicationName(string applicationName)
+        public async Task<Applications?> GetApplicationByApplicationName(string applicationName)
         {
             return await _dbContext.Applications.AsNoTracking().FirstOrDefaultAsync(a => a.ApplicationName == applicationName);
         }
@@ -55,7 +55,7 @@ namespace SimpleCRUD.BL.Services
         /// </summary>
         /// <param name="application">Application to be inserted</param>
         /// <returns>The inserted Application</returns>
-        public async Task<Application> InsertApplication(Application application)
+        public async Task<Applications> InsertApplication(Applications application)
         {
             try
             {

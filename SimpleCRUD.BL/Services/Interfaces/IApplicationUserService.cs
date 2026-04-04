@@ -9,12 +9,12 @@ namespace SimpleCRUD.BL.Services.Interfaces
 {
     public interface IApplicationUserService
     {
-        Task<List<ApplicationUser>> GetAllApplicationUsers();
+        Task<List<ApplicationUsers>> GetAllApplicationUsers();
 
-        Task<ApplicationUser?> GetApplicationUserByApplicationUserID(Guid ApplicationUserID);
+        Task<ApplicationUsers?> GetApplicationUserByApplicationUserID(Guid ApplicationUserID);
 
-        Task<List<ApplicationUser>> GetApplicationUsersByUserID(Guid UserID);
+        Task<List<ApplicationUsers>> GetApplicationUsersByUserID(Guid UserID);
 
-        Task<ApplicationUser> InsertApplicationUser(ApplicationUser applicationUser);
+        Task<ApplicationUsers> InsertApplicationUser(ApplicationUsers applicationUser);
     }
 }

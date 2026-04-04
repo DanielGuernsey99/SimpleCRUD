@@ -12,35 +12,35 @@ public partial class SimpleCrudDbContext : DbContext
     {
     }
 
-    public virtual DbSet<Application> Applications { get; set; }
+    public virtual DbSet<Applications> Applications { get; set; }
 
-    public virtual DbSet<ApplicationRole> ApplicationRoles { get; set; }
+    public virtual DbSet<ApplicationRoles> ApplicationRoles { get; set; }
 
-    public virtual DbSet<ApplicationUser> ApplicationUsers { get; set; }
+    public virtual DbSet<ApplicationUsers> ApplicationUsers { get; set; }
 
     public virtual DbSet<ApplicationUserRole> ApplicationUserRoles { get; set; }
 
-    public virtual DbSet<User> Users { get; set; }
+    public virtual DbSet<Users> Users { get; set; }
 
-    public virtual DbSet<UserRole> UserRoles { get; set; }
+    public virtual DbSet<Roles> Roles { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Application>(entity =>
+        modelBuilder.Entity<Applications>(entity =>
         {
             entity.HasKey(e => e.ApplicationId).HasName("PK_ApplicationID");
 
             entity.Property(e => e.ApplicationId).ValueGeneratedNever();
         });
 
-        modelBuilder.Entity<ApplicationRole>(entity =>
+        modelBuilder.Entity<ApplicationRoles>(entity =>
         {
             entity.HasKey(e => e.ApplicationRoleId).HasName("PK_ApplicationRoleID");
 
             entity.Property(e => e.ApplicationRoleId).ValueGeneratedNever();
         });
 
-        modelBuilder.Entity<ApplicationUser>(entity =>
+        modelBuilder.Entity<ApplicationUsers>(entity =>
         {
             entity.HasKey(e => e.ApplicationUserId).HasName("PK_ApplicationUserID");
 
@@ -57,10 +57,6 @@ public partial class SimpleCrudDbContext : DbContext
 
             entity.Property(e => e.ApplicationUserRolesId).ValueGeneratedNever();
 
-            entity.HasOne(d => d.Application).WithMany(p => p.ApplicationUserRoles)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_ApplicationID");
-
             entity.HasOne(d => d.ApplicationRole).WithMany(p => p.ApplicationUserRoles)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_ApplicationRoleID");
@@ -70,14 +66,14 @@ public partial class SimpleCrudDbContext : DbContext
                 .HasConstraintName("FK_ApplicationUserID");
         });
 
-        modelBuilder.Entity<User>(entity =>
+        modelBuilder.Entity<Users>(entity =>
         {
             entity.HasKey(e => e.UserId).HasName("PK__Users__3214EC27BB834F9E");
 
             entity.Property(e => e.UserId).ValueGeneratedNever();
         });
 
-        modelBuilder.Entity<UserRole>(entity =>
+        modelBuilder.Entity<Roles>(entity =>
         {
             entity.HasKey(e => e.RoleId).HasName("PK__Roles__8AFACE3A8C985CAD");
 

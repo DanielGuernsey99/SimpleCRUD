@@ -22,7 +22,7 @@ namespace SimpleCRUD.API.Controllers
         }
 
         [HttpGet("GetAllApplicationRoles")]
-        public async Task<ActionResult<List<ApplicationRole>>> GetAllApplicationRoles()
+        public async Task<ActionResult<List<ApplicationRoles>>> GetAllApplicationRoles()
         {
             var applicationRoles = await _applicationRoleService.GetAllApplicationRoles();
 
@@ -37,7 +37,7 @@ namespace SimpleCRUD.API.Controllers
         }
 
         [HttpGet("GetApplicationRoleByApplicationRoleID/{applicationRoleID}")]
-        public async Task<ActionResult<ApplicationRole>> GetApplicationRoleByApplicationRoleID(Guid applicationRoleID)
+        public async Task<ActionResult<ApplicationRoles>> GetApplicationRoleByApplicationRoleID(Guid applicationRoleID)
         {
             var applicationRoles = await _applicationRoleService.GetApplicationRoleByApplicationRoleID(applicationRoleID);
 
@@ -52,7 +52,7 @@ namespace SimpleCRUD.API.Controllers
         }
 
         [HttpGet("GetApplicationRoleByApplicationID/{applicationID}")]
-        public async Task<ActionResult<List<ApplicationRole>>> GetApplicationRoleByApplicationID(Guid applicationID)
+        public async Task<ActionResult<List<ApplicationRoles>>> GetApplicationRoleByApplicationID(Guid applicationID)
         {
             var applicationRoles = await _applicationRoleService.GetApplicationRolesByApplicationID(applicationID);
 
@@ -68,7 +68,7 @@ namespace SimpleCRUD.API.Controllers
 
 
         [HttpGet("GetApplicationRoleByRoleID/{RoleID}")]
-        public async Task<ActionResult<List<ApplicationRole>>> GetApplicationRoleByRoleID(Guid roleID)
+        public async Task<ActionResult<List<ApplicationRoles>>> GetApplicationRoleByRoleID(Guid roleID)
         {
             var applicationRoles = await _applicationRoleService.GetApplicationRolesByRoleID(roleID);
 
@@ -83,7 +83,7 @@ namespace SimpleCRUD.API.Controllers
         }
 
         [HttpPost("InsertApplicationRole")]
-        public async Task<ActionResult<ApplicationRole>> InsertApplicationRole([FromBody] InsertApplicationRoleRequest insertApplicationRoleRequest)
+        public async Task<ActionResult<ApplicationRoles>> InsertApplicationRole([FromBody] InsertApplicationRoleRequest insertApplicationRoleRequest)
         {
             if (insertApplicationRoleRequest == null)
             {
@@ -100,7 +100,7 @@ namespace SimpleCRUD.API.Controllers
                 return BadRequest("Application Role ApplicationID is null");
             }
 
-            var applicationRole = new ApplicationRole
+            var applicationRole = new ApplicationRoles
             {
                 ApplicationRoleId = new Guid(),
                 ApplicationId = insertApplicationRoleRequest.ApplicationId,

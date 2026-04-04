@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SimpleCRUD.Data.DataContext;
 
@@ -11,9 +12,11 @@ using SimpleCRUD.Data.DataContext;
 namespace SimpleCRUD.Data.Migrations
 {
     [DbContext(typeof(SimpleCrudDbContext))]
-    partial class SimpleCrudDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260404222139_UserRoleToRole")]
+    partial class UserRoleToRole
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,6 +51,9 @@ namespace SimpleCRUD.Data.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("ApplicationUserRolesID");
 
+                    b.Property<Guid>("ApplicationId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<Guid>("ApplicationRoleId")
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("ApplicationRoleID");
@@ -58,6 +64,8 @@ namespace SimpleCRUD.Data.Migrations
 
                     b.HasKey("ApplicationUserRolesId")
                         .HasName("PK_ApplicationUserRolesID");
+
+                    b.HasIndex("ApplicationId");
 
                     b.HasIndex("ApplicationRoleId");
 
@@ -152,6 +160,12 @@ namespace SimpleCRUD.Data.Migrations
 
             modelBuilder.Entity("SimpleCRUD.Data.Entities.ApplicationUserRole", b =>
                 {
+                    b.HasOne("SimpleCRUD.Data.Entities.Applications", "Application")
+                        .WithMany("ApplicationUserRoles")
+                        .HasForeignKey("ApplicationId")
+                        .IsRequired()
+                        .HasConstraintName("FK_ApplicationID");
+
                     b.HasOne("SimpleCRUD.Data.Entities.ApplicationRoles", "ApplicationRole")
                         .WithMany("ApplicationUserRoles")
                         .HasForeignKey("ApplicationRoleId")
@@ -163,6 +177,8 @@ namespace SimpleCRUD.Data.Migrations
                         .HasForeignKey("ApplicationUserId")
                         .IsRequired()
                         .HasConstraintName("FK_ApplicationUserID");
+
+                    b.Navigation("Application");
 
                     b.Navigation("ApplicationRole");
 
@@ -200,6 +216,8 @@ namespace SimpleCRUD.Data.Migrations
 
             modelBuilder.Entity("SimpleCRUD.Data.Entities.Applications", b =>
                 {
+                    b.Navigation("ApplicationUserRoles");
+
                     b.Navigation("ApplicationUsers");
                 });
 

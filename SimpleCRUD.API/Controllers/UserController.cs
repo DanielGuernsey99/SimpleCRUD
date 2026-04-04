@@ -21,7 +21,7 @@ namespace SimpleCRUD.API.Controllers
         }
 
         [HttpGet("GetAllUsers")]
-        public async Task<ActionResult<List<User>>> GetAllUsers()
+        public async Task<ActionResult<List<Users>>> GetAllUsers()
         {
             var users = await _userService.GetAllUsers();
 
@@ -36,7 +36,7 @@ namespace SimpleCRUD.API.Controllers
         }
 
         [HttpGet("GetUserByUserID/{userID}")]
-        public async Task<ActionResult<User>> GetUserByUserID(Guid userID)
+        public async Task<ActionResult<Users>> GetUserByUserID(Guid userID)
         {
             var users = await _userService.GetUserByUserID(userID);
 
@@ -51,14 +51,14 @@ namespace SimpleCRUD.API.Controllers
         }
 
         [HttpPost("InsertUser")]
-        public async Task<ActionResult<User>> InsertUser([FromBody] InsertUserRequest insertUserRequest)
+        public async Task<ActionResult<Users>> InsertUser([FromBody] InsertUserRequest insertUserRequest)
         {
             if (insertUserRequest == null)
             {
                 return BadRequest("User is null");
             }
 
-            var user = new User
+            var user = new Users
             {
                 UserId = Guid.NewGuid(),
                 FirstName = insertUserRequest.FirstName,

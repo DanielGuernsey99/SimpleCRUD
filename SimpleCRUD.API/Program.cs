@@ -21,7 +21,7 @@ try
     builder.Services.AddScoped<IApplicationService, ApplicationService>();
     builder.Services.AddScoped<IApplicationUserRoleService, ApplicationUserRoleService>();
     builder.Services.AddScoped<IApplicationUserService, ApplicationUserService>();
-    builder.Services.AddScoped<IUserRoleService, UserRoleService>();
+    builder.Services.AddScoped<IRoleService, RoleService>();
     builder.Services.AddScoped<IUserService, UserService>();
 
     var app = builder.Build();
