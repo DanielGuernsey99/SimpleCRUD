@@ -2,8 +2,6 @@ name: .NET PR Validation
 
 on:
   pull_request:
-    branches:
-      - develop
 
 jobs:
   build-and-test:
@@ -13,12 +11,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up .NET
+      - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 8.0.x
 
-      - name: Restore dependencies
+      - name: Restore
         run: dotnet restore
 
       - name: Build
