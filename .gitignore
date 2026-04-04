@@ -366,3 +366,6 @@ FodyWeavers.xsd
 # Local config files (do not commit secrets)
 appsettings.Local.json
 **/appsettings.Local.json
+
+# Ignore launch settings (local debug config)
+**/launchSettings.json
