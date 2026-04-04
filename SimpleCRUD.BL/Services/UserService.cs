@@ -15,7 +15,7 @@ namespace SimpleCRUD.BL.Services
     {
         private readonly ILogger<UserService> _logger;
         private readonly SimpleCrudDbContext _dbContext;
-        public UserService(SimpleCrudDbContext dbContext, ILogger<UserService> logger) 
+        public UserService(SimpleCrudDbContext dbContext, ILogger<UserService> logger)
         {
             _dbContext = dbContext;
             _logger = logger;
@@ -57,7 +57,7 @@ namespace SimpleCRUD.BL.Services
 
                 return user;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 _logger.LogError(ex, "Error inserting user | InsertUser.");
                 throw;
