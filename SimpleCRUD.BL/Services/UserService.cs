@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 using SimpleCRUD.BL.Services.Interfaces;
 using SimpleCRUD.Data.DataContext;
 using SimpleCRUD.Data.Entities;
@@ -13,12 +12,10 @@ namespace SimpleCRUD.BL.Services
 {
     public class UserService : IUserService
     {
-        private readonly ILogger<UserService> _logger;
         private readonly SimpleCrudDbContext _dbContext;
-        public UserService(SimpleCrudDbContext dbContext, ILogger<UserService> logger)
+        public UserService(SimpleCrudDbContext dbContext)
         {
             _dbContext = dbContext;
-            _logger = logger;
         }
 
         /// <summary>
@@ -47,21 +44,13 @@ namespace SimpleCRUD.BL.Services
         /// <returns>The inserted user</returns>
         public async Task<Users> InsertUser(Users user)
         {
-            try
-            {
-                user.UserId = Guid.NewGuid();
+            user.UserId = Guid.NewGuid();
 
-                _dbContext.Users.Add(user);
+            _dbContext.Users.Add(user);
 
-                await _dbContext.SaveChangesAsync();
+            await _dbContext.SaveChangesAsync();
 
-                return user;
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error inserting user | InsertUser.");
-                throw;
-            }
+            return user;
         }
     }
 }

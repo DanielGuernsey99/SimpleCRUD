@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 using SimpleCRUD.BL.Services.Interfaces;
 using SimpleCRUD.Data.DataContext;
 using SimpleCRUD.Data.Entities;
@@ -9,12 +8,10 @@ namespace SimpleCRUD.BL.Services
     public class RoleService : IRoleService
     {
         private readonly SimpleCrudDbContext _dbContext;
-        private readonly ILogger<RoleService> _logger;
 
-        public RoleService(SimpleCrudDbContext dbContext, ILogger<RoleService> logger)
+        public RoleService(SimpleCrudDbContext dbContext)
         {
             _dbContext = dbContext;
-            _logger = logger;
         }
 
         /// <summary>
@@ -53,21 +50,13 @@ namespace SimpleCRUD.BL.Services
         /// <returns>The inserted Role</returns>
         public async Task<Roles> InsertRole(Roles role)
         {
-            try
-            {
-                role.RoleId = Guid.NewGuid();
+            role.RoleId = Guid.NewGuid();
 
-                _dbContext.Roles.Add(role);
+            _dbContext.Roles.Add(role);
 
-                await _dbContext.SaveChangesAsync();
+            await _dbContext.SaveChangesAsync();
 
-                return role;
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error inserting role | InsertRole.");
-                throw;
-            }
+            return role;
         }
     }
 }
