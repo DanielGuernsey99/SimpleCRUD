@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 using SimpleCRUD.BL.Services.Interfaces;
 using SimpleCRUD.Data.DataContext;
 using SimpleCRUD.Data.Entities;
@@ -14,12 +13,10 @@ namespace SimpleCRUD.BL.Services
     public class ApplicationRoleService : IApplicationRoleService
     {
         private readonly SimpleCrudDbContext _dbContext;
-        private readonly ILogger<ApplicationRoleService> _logger;
 
-        public ApplicationRoleService(SimpleCrudDbContext dbContext, ILogger<ApplicationRoleService> logger)
+        public ApplicationRoleService(SimpleCrudDbContext dbContext)
         {
             _dbContext = dbContext;
-            _logger = logger;
         }
 
         /// <summary>
@@ -68,21 +65,13 @@ namespace SimpleCRUD.BL.Services
         /// <returns>The ApplicationRole inserted</returns>
         public async Task<ApplicationRoles> InsertApplicationRole(ApplicationRoles applicationRole)
         {
-            try
-            {
-                applicationRole.ApplicationRoleId = Guid.NewGuid();
+            applicationRole.ApplicationRoleId = Guid.NewGuid();
 
-                _dbContext.ApplicationRoles.Add(applicationRole);
+            _dbContext.ApplicationRoles.Add(applicationRole);
 
-                await _dbContext.SaveChangesAsync();
+            await _dbContext.SaveChangesAsync();
 
-                return applicationRole;
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error inserting Application | InsertApplication.");
-                throw;
-            }
+            return applicationRole;
         }
     }
 }

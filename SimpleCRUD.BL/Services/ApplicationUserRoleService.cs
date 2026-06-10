@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 using SimpleCRUD.BL.Services.Interfaces;
 using SimpleCRUD.Data.DataContext;
 using SimpleCRUD.Data.Entities;
@@ -14,12 +13,10 @@ namespace SimpleCRUD.BL.Services
     public class ApplicationUserRoleService : IApplicationUserRoleService
     {
         private readonly SimpleCrudDbContext _dbContext;
-        private readonly ILogger<ApplicationUserRoleService> _logger;
 
-        public ApplicationUserRoleService(SimpleCrudDbContext dbContext, ILogger<ApplicationUserRoleService> logger)
+        public ApplicationUserRoleService(SimpleCrudDbContext dbContext)
         {
             _dbContext = dbContext;
-            _logger = logger;
         }
 
         /// <summary>
@@ -68,21 +65,13 @@ namespace SimpleCRUD.BL.Services
         /// <returns>The inserted ApplicationUserRole</returns>
         public async Task<ApplicationUserRole> InsertApplicationUserRole(ApplicationUserRole applicationUserRole)
         {
-            try
-            {
-                applicationUserRole.ApplicationUserRolesId = Guid.NewGuid();
+            applicationUserRole.ApplicationUserRolesId = Guid.NewGuid();
 
-                _dbContext.ApplicationUserRoles.Add(applicationUserRole);
+            _dbContext.ApplicationUserRoles.Add(applicationUserRole);
 
-                await _dbContext.SaveChangesAsync();
+            await _dbContext.SaveChangesAsync();
 
-                return applicationUserRole;
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, $"Error inserting ApplicationUserRole | InsertApplicationUserRole");
-                throw;
-            }
+            return applicationUserRole;
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 using SimpleCRUD.BL.Services.Interfaces;
 using SimpleCRUD.Data.DataContext;
 using SimpleCRUD.Data.Entities;
@@ -9,12 +8,10 @@ namespace SimpleCRUD.BL.Services
     public class ApplicationUserService : IApplicationUserService
     {
         private readonly SimpleCrudDbContext _dbContext;
-        private readonly ILogger<ApplicationUserService> _logger;
 
-        public ApplicationUserService(SimpleCrudDbContext dbContext, ILogger<ApplicationUserService> logger)
+        public ApplicationUserService(SimpleCrudDbContext dbContext)
         {
             _dbContext = dbContext;
-            _logger = logger;
         }
 
         /// <summary>
@@ -54,21 +51,13 @@ namespace SimpleCRUD.BL.Services
         /// <returns>The inserted ApplicationUser</returns>
         public async Task<ApplicationUsers> InsertApplicationUser(ApplicationUsers applicationUser)
         {
-            try
-            {
-                applicationUser.ApplicationUserId = Guid.NewGuid();
+            applicationUser.ApplicationUserId = Guid.NewGuid();
 
-                _dbContext.ApplicationUsers.Add(applicationUser);
+            _dbContext.ApplicationUsers.Add(applicationUser);
 
-                await _dbContext.SaveChangesAsync();
+            await _dbContext.SaveChangesAsync();
 
-                return applicationUser;
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error inserting ApplicationUser | InsertApplicationUser.");
-                throw;
-            }
+            return applicationUser;
         }
     }
 }
