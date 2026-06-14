@@ -79,7 +79,7 @@ namespace SimpleCRUD.API.Controllers
 
             var application = new Applications
             {
-                ApplicationId = new Guid(),
+                ApplicationId = Guid.NewGuid(),
                 ApplicationName = insertApplicationRequest.ApplicationName,
                 ApplicationDescription = insertApplicationRequest.ApplicationDescription
             };

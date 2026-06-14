@@ -79,7 +79,7 @@ namespace SimpleCRUD.API.Controllers
 
             var role = new Roles
             {
-                RoleId = new Guid(),
+                RoleId = Guid.NewGuid(),
                 RoleName = insertRoleRequest.RoleName,
                 Description = insertRoleRequest.Description
             };
