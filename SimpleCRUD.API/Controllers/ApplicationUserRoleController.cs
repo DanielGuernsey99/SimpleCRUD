@@ -100,7 +100,7 @@ namespace SimpleCRUD.API.Controllers
 
             var applicationUserRole = new ApplicationUserRole
             {
-                ApplicationUserRolesId = new Guid(),
+                ApplicationUserRolesId = Guid.NewGuid(),
                 ApplicationRoleId = insertApplicationUserRoleRequest.ApplicationRoleID,
                 ApplicationUserId = insertApplicationUserRoleRequest.ApplicationUserID
             };

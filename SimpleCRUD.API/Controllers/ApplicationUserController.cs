@@ -85,7 +85,7 @@ namespace SimpleCRUD.API.Controllers
 
             var applicationUser = new ApplicationUsers
             {
-                ApplicationUserId = new Guid(),
+                ApplicationUserId = Guid.NewGuid(),
                 ApplicationId = insertApplicationUserRequest.ApplicationID,
                 UserId = insertApplicationUserRequest.UserID
             };
